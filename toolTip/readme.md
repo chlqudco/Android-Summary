@@ -1,23 +1,23 @@
-- 1. 안스 프로그램 램 사용량 설정을 조절할 수 있다, 너무 렉걸리면 설정하기(폰 램 얘기 아님;)
+- 안스 프로그램 램 사용량 설정을 조절할 수 있다, 너무 렉걸리면 설정하기(폰 램 얘기 아님;)
 	- File -> Settings -> System Settings -> Memory Settings 에서 힙사이즈 늘리기
 
-- 2. 자동 import 
+- 자동 import 
 	- File -> Settings -> Editor -> General -> Auto Import에서 걍 다 체크;
 	- 알트 앤
 
-- 3. 모든 단축키 보기
+- 모든 단축키 보기
 	- Help -> Keymap Reference
 
-- 4. 매개변수 정보 보기
+- 매개변수 정보 보기
 	- 컨트롤 P
 
-- 5. 코드 한꺼번에 접거나 펴기
+- 코드 한꺼번에 접거나 펴기
 	- 컨트롤 쉬프트 +or-
 
-- 6. API 문서? 보기
+- API 문서? 보기
 	- 컨트롤 큐
 
-- 7. 코드 스타일 변경
+- 코드 스타일 변경
 	- File -> Settings -> Editor -> Code Style
 
 --- 
@@ -32,3 +32,19 @@
 		- 번들 변수?.put자료형Sequence(키,밸류)
 	- 데이터 복원
 		- 번들 변수.get자료형Sequence(키)
+		
+- 코드 정리 : 컨트롤 알트 엘
+
+- !는 널이 될수 없는 타입
+
+- 뷰바인딩
+buildFeatures{
+        viewBinding true
+    }
+
+val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+    }
