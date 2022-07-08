@@ -7,21 +7,25 @@
 - 1. 매니페스트에 이용할 기능 퍼미션 쓰기
 
 - 2. 권한이 필요한 작업은 실행 전 권한을 받았는지 확인해야 함
+```
 private fun setupPermission() {
         val permission = ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
-        
+	
         if (permission != PackageManager.PERMISSION_GRANTED){
             //원하는 기능 실행
         }
     }
+```
 
 - 3. 권한 받아오기
+```
 private fun makeRequest() {
         ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.RECORD_AUDIO), RECORD_REQUEST_CODE)
     }
+```
 
 - 4. 권한 체크 하기
-override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+``` override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         
         when(requestCode){
@@ -34,9 +38,10 @@ override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out
             }
         }
     }
-
+```
 - 5. 퍼미션을 거절한 사람에게 이유를 보여줘야함
 	- 이전에 퍼미션을 거절한적이 있으면 should 함수가 true를 반환함
+```
 if (permission != PackageManager.PERMISSION_GRANTED){
             //거절한 적이 있는 경우
             if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.RECORD_AUDIO)){
@@ -55,3 +60,4 @@ if (permission != PackageManager.PERMISSION_GRANTED){
                 makeRequest()
             }
         }
+```
