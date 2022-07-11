@@ -156,3 +156,38 @@
 
 
 - ![Android_activity_lifecycle_methods](https://user-images.githubusercontent.com/68932465/178191603-fb83a1c5-0db4-4e92-8ee3-21711d6ddda5.jpg)
+
+
+- 대부분의 컴포넌트는 알아서 상태값을 저장하고 복원한다.
+	- 그게 싫으면  android:saveEnabled="false" 속성을 주면 된다
+
+- Bundle 클래스
+	- 저장될 필요가 있는 동적 데이터를 onSaveinstanceState 함수에서 Bundle 객체에 저장해 두자
+	- UI 컴포넌트의 자동 저장 메커니즘 이외에 저장 기능이 필요한 경우 저장하면 좋다
+	- key-value 쌍으로 구성되는 데이터를 저장한다
+	- 키는 문자열이며 value는 기본형 or Parcelable 인터페이스를 구현하는 어떤 객체도 가능하다
+
+- 수동 저장 코드
+```
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.i(TAG, "onSaveInstanceState")
+        
+        val userText = binding.editText.text
+        outState.putCharSequence("savedText", userText)
+    }
+```
+
+- 수동 복원 코드
+	- onCreate나 onRestoreInstanceState 둘 중 한곳에서 복원하면 된다.
+	- 초기화 작업이 끝난 뒤에 복원하고 싶으면 후자를 선택
+```
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        Log.i(TAG, "onRestoreInstanceState")
+        
+        val userText = savedInstanceState.getCharSequence("savedText")
+        binding.editText.setText(userText)
+    }
+```
+
