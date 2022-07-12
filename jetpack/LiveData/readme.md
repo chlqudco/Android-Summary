@@ -10,5 +10,15 @@
 
 	- 또한 자신을 관찰하는 옵저버의 생명주기 상태를 안다는 장점이 있다
 		- 액티비티의 생명주기 상태가 변경되는 것을 알고 대응할 수 있다
+
+- LiveData 컴포넌트는 ViewModel의 데이터 값을 포함한다
+	- LiveData인스턴스에 포함된 데이터는 컨트롤러가 관찰할 수 있다
+	- 따라서 값이 변경되면 언제든지 통보받을 수 있다
+
+- 옵저버
+	- 데이터 변겨을 관찷는 옵저버는 Observer 인터페이스를 구현하는 객체를 생성한다
+	- 이 객체는 LiveData의 값이 변경될 때 호출되는 onChanged() 함수를 구현한다
+	- 생성된 인스턴스는 LiveData의 observe 함수 호출을 통해 연결된다
+
 	
 ![download](https://user-images.githubusercontent.com/68932465/178421961-44317ccd-f31e-4afa-9841-e3e07363723a.png)
