@@ -11,3 +11,4 @@
 	- 또한 자신을 관찰하는 옵저버의 생명주기 상태를 안다는 장점이 있다
 		- 액티비티의 생명주기 상태가 변경되는 것을 알고 대응할 수 있다
 	
+![download](https://user-images.githubusercontent.com/68932465/178421961-44317ccd-f31e-4afa-9841-e3e07363723a.png)
