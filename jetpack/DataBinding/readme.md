@@ -1,0 +1,3 @@
+- DataBinding
+	- ViewModel의 데이터를 XML 레이아웃 파일의 뷰와 직접 연결되게 해준다
+	- 즉, 별도의 코드 작성 없이 ViewModel에 저장된 LiveData 값이 XMl 파일에서 직접 참조될 수 있다
