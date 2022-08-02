@@ -1,0 +1,47 @@
+- 개발 순서
+
+1. 코인 의존성 추가
+    implementation "org.koin:koin-android:2.1.5"
+    implementation "org.koin:koin-android-scope:2.1.5"
+    implementation "org.koin:koin-android-viewmodel:2.1.5"
+    implementation "org.koin:koin-android-ext:2.1.5"
+
+2. Application 클래스 만들기
+class AppApplication: Application() {
+    override fun onCreate() {
+        super.onCreate()
+        startKoin {
+            androidLogger(Level.ERROR)
+            androidContext(this@AppApplication)
+            modules(appModule)
+        }
+    }
+}
+
+3. 메니페스트 어플 태그에 이름 추가하기
+android:name="com.chlqudco.develop.shoppingmall.AopPart5Chapter02Application"
+
+4. di 패키지 만들고 appModule 파일 만들기
+internal val appModule = module { }
+
+5. 안에 뭘 어떻게 넣어야 될진 모르지만 여태 까지 배운바로는
+
+// 코루틴 디스패쳐도 넣어 ㅋㅋ
+single { Dispatchers.Main }
+single { Dispatchers.IO }
+
+// 뷰모델도 넣어
+viewModel { MainViewModel() }
+viewModel { ProductListViewModel(get()) }
+
+// 유스케이스도 넣어
+factory { GetProductListUseCase(get()) }
+
+// 레포? 도 넣어
+single<ProductRepository> { DefaultProductRepository(get(), get(), get()) }
+single { provideGsonConverterFactory() }
+single { buildOkHttpClient() }
+
+// DB도 넣어
+single { provideDB(androidApplication()) }
+single { provideToDoDao(get()) }
