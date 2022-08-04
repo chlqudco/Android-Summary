@@ -1,2 +1,22 @@
 //다크모드 금지
 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+
+//투명 버튼
+AppCompatButton 쓴 다음 background 값에 @null 주기
+
+
+//text 밑줄
+<string name="deleteRecord"><u>기록 삭제</u></string>
+
+
+// AlertDialog 생성
+AlertDialog.Builder(this)
+            .setTitle("주의")
+            .setMessage("정말 삭제하시겠습니까?")
+            .setPositiveButton("네") { _, _ ->
+                viewModel.deleteRecord(recordId)
+            }
+            .setNegativeButton("아니오") { _, _ -> }
+            .create()
+            .show()
