@@ -20,3 +20,41 @@ AlertDialog.Builder(this)
             .setNegativeButton("아니오") { _, _ -> }
             .create()
             .show()
+           
+
+// 자동 import
+File -> Settings -> Editor -> General -> Auto Import에서 걍 다 체크;
+
+
+// 뷰 바인딩
+buildFeatures{
+        viewBinding true
+    }
+
+val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+    }
+    
+
+//현재시간 2022/05/05 형식으로 저장하기
+- var 시간 = SimpleDataFormat("yyyy/MM/dd").format(System.currentTimeMillis())
+
+
+
+// SpannableStringBuilder ( 글자 색칠 )
+val ssb = SpannableStringBuilder(텍스트뷰.text)
+ssb.setSpan(ForegroundColorSpan(getColor(R.color.색깔)), 텍스트뷰.text.length-1, 텍스트뷰.text.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+텍스트뷰.text = ssb
+위에 꺼 적용하면 마지막 한글자만 원하는 색깔로 변경 가능
+
+
+// 일정 기간마다 일하는 타이머
+만드는법 : timer(period = 5000){ 기간 마다 뭔 일을 할 건지 }
+
+
+
+
+
