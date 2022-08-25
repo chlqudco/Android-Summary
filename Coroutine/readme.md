@@ -64,3 +64,18 @@
 - 1. 의존성 추가
 	- implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1'
 	- implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+	
+---
+	
+- 패캠 코루틴 강의
+	- 중복되는 내용은 없애고 새로운 내용만 작성할 거임
+	
+- 코루틴을 써야 하는 이유
+	- 코루틴을 안쓰고 비동기적인 처리를 하기 위해선 콜백을 써야 한다.
+	- 그러나 콜백이 깊어지면 콜백지옥이란게 생겨난다
+	- RxKotlin은 콜백 지옥을 해결했지만 수많은 연산자를 알아야 스트림을 구현할 수 있다.
+	- 코루틴은 비동기적인 코드를 동기적으로 구현할수 있게 해준다
+		- 그냥 순차적으로 작성해도 알아서 비동기 코드가 원하는대로 작동한다
+
+- async
+	- 결과나 예외를 반환 가능한 Defered<T> 를 반환해준다
