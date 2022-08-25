@@ -102,3 +102,18 @@ CoroutineScope(Dispatchers.IO).launch {
         }
 ```
 
+- 이미지 불러오는 코드 예시
+
+```
+        binding.button.setOnClickListener {
+            CoroutineScope(Dispatchers.Main).launch { 
+                //프로그래스바 보이기
+                val url = editText.text.toString()
+                val bitmap = withContext(Dispatchers.IO){
+                    //이미지 불러오는 함수, 당연히 suspend로 작성해야 됨
+                }
+                imageView.setImageBitmap(bitmap)
+                //프로그래스바 숨기기
+            }
+        }
+```
