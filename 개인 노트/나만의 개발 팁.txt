@@ -40,7 +40,7 @@ val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     
 
 //현재시간 2022/05/05 형식으로 저장하기
-- var 시간 = SimpleDataFormat("yyyy/MM/dd").format(System.currentTimeMillis())
+var 시간 = SimpleDataFormat("yyyy/MM/dd").format(System.currentTimeMillis())
 
 
 
@@ -59,3 +59,5 @@ ssb.setSpan(ForegroundColorSpan(getColor(R.color.색깔)), 텍스트뷰.text.len
 오른쪽 gradle -> Tasks -> signingReport 더블클릭
 
 
+//리사이클러 뷰 사이에 구분선 넣기
+리사이클러뷰.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
