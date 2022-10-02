@@ -61,3 +61,21 @@ ssb.setSpan(ForegroundColorSpan(getColor(R.color.색깔)), 텍스트뷰.text.len
 
 //리사이클러 뷰 사이에 구분선 넣기
 리사이클러뷰.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+
+
+//버튼 그림자? 없애기
+stateListAnimator = "@null"
+
+
+//액션바 사이즈로 레이아웃 크기 지정
+height = ?attr/actionBarSize
+
+
+//맨~위 하얗게 하기
+statusBar windowLightStatusBar
+
+
+//문자열을 날짜 형식으로 바꾸기
+val format = SimpleDateFormat("MM월 dd일")
+val date= Date(변수)
+변수.text = format.format(date).toString
