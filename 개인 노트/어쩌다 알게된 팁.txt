@@ -111,3 +111,85 @@ buildTypes{
 
 
 ====================================================================
+
+
+- Admob으로 배너광고 표시하기
+
+- 애드몹 라이브러리 추가하기
+	- implementation 'com.google.android.gms:play-services-ads:19.7.0'
+
+- 매니페스트에 애드몹 ID를 추가해줘야 함
+	- 구글 애드몹 사이트에서 가입을 한 뒤 앱을 등록해야 함
+	- 그럼 각 앱마다 고유의 앱 ID를 부여해줌
+	- mata-data 태그 안에 name과 value를 넣어주기
+
+```
+
+<meta-data
+	android:name="com.google.android.gms.ads.APPLICATION_ID"
+	android:value="ca-app-pub-3940256099942544~3347511713" />
+
+```
+
+- 모든 테스트 값은 AdMob 도큐먼트에 나와 있음
+
+- xml 파일에서 애드몹을 표시할 AdView를 추가하자
+	- adSize 속성으로 어떤 광고인지, adUnitId로 ID값 넣기
+	- 배너 크기 상수값은 공식 문서 확인
+	- adUnitId도 애드몹 가입한 뒤 배너광고 ID 가져오기
+
+- 코틀린으로 배너 광고를 불러오자
+	- 생명주기 처리 해주는 것도 잊지 말자
+	- 테스트 기기 등록하는거 절대 잊지 말자. 정지당한다
+
+```
+
+private fun showBannerAd() {
+    // 애드몹 초기화
+    MobileAds.initialize(this) {}
+
+    // 테스트용 기기를 등록하여 광고 카운팅을 제외하도록 처리, 이해 안가니까 더 검색해보기
+    val testDeviceIds = listOf("My device ID1", "My Device ID2")
+    MobileAds.setRequestConfiguration(
+        RequestConfiguration.Builder()
+            .setTestDeviceIds(testDeviceIds)
+            .build()
+    )
+
+    mAdView = binding.adView
+    // 인터넷에서 광고를 불러옴
+    val bannerAdRequest = AdRequest.Builder().build()
+    // 광고를 배너에 표시
+    mAdView.loadAd(bannerAdRequest)
+    mAdView.adListener = object : AdListener() {
+        // 광고 로딩이 성공했을때 처리
+        override fun onAdLoaded() {
+            Toast.makeText(applicationContext, "Banner Ad loaded", Toast.LENGTH_SHORT).show()
+        }
+
+        // 광고 로딩이 실패했을때 처리
+        override fun onAdFailedToLoad(p0: LoadAdError?) {
+            Toast.makeText(applicationContext, "Banner Ad loading failed", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+
+override fun onPause() {
+    mAdView.pause()
+    super.onPause()
+}
+
+override fun onResume() {
+    super.onResume()
+    mAdView.resume()
+}
+
+override fun onDestroy() {
+    mAdView.destroy()
+    super.onDestroy()
+}
+
+
+```
+
+################################################################################################
