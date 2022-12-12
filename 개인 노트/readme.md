@@ -1,1 +1,2 @@
-https://github.com/wasabeef/awesome-android-ui
+- https://github.com/wasabeef/awesome-android-ui
+- https://github.com/taeiim/Android-Study
